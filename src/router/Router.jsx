@@ -1,15 +1,14 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
-import Home from "../views/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cocktail from "../views/Cocktail";
+import Home from "../views/Home";
 
 const MainRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/cocktail' component={Cocktail}/>
+        <Route path='/' element={<Home />} />
+        <Route path='/drink/:slug' element={<Cocktail />}/>
       </Routes>
     </BrowserRouter>
   );

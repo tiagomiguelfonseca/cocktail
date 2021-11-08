@@ -1,31 +1,48 @@
-import React, { useContext} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { NavBarItems, FlexContainer, Logo, SubNavBarItems, Nav } from "./style";
- import { AppContext } from "../ContextProvider";
+import facebook from "../../assets/images/facebook_icon.png";
+import logo from "../../assets/images/logo.png";
+import twitter from "../../assets/images/twitter_icon.png";
+import { Navy } from "../Typography";
+import { CustomFlexContainer, Logo, Nav, NavBarItem, NavBarItems } from "./style";
 
- export default function NavBar(props) {
-
-  
+export default function NavBar(props) {
   return (
-      <Nav>
-        <NavBarItems>
-          <FlexContainer>
-            <li>
-              <Link to='/about'>About</Link>
-            </li>
-            <li>
-              <Link to='/consultation'>Consultation</Link>
-            </li>
-          </FlexContainer>
-          <FlexContainer>
-            <Logo>
-              <Link to='/'>Sooth</Link>
-            </Logo>
-          </FlexContainer>
-        </NavBarItems>
-        <SubNavBarItems>
-      </SubNavBarItems>
-      </Nav>
-
+    <Nav >
+      <NavBarItems>
+        <CustomFlexContainer>
+          <Logo>
+            <Link to='/'>
+              <img src={logo} alt='logo' />
+            </Link>
+          </Logo>
+        </CustomFlexContainer>
+        <CustomFlexContainer>
+          <NavBarItem active>
+            <Link to='/'>
+              <Navy>Home</Navy>
+            </Link>
+          </NavBarItem>
+          <NavBarItem>
+            <Link to='/api'>
+              <Navy>API</Navy>
+            </Link>
+          </NavBarItem>
+          <NavBarItem>
+            <Link to='/forum'>
+              <Navy>Forum</Navy>
+            </Link>
+          </NavBarItem>
+          <NavBarItem>
+            <img src={facebook} alt='' />
+          </NavBarItem>
+          <NavBarItem>
+            <img src={twitter} alt='' />
+          </NavBarItem>
+          <NavBarItem>
+          </NavBarItem>
+        </CustomFlexContainer>
+      </NavBarItems>
+    </Nav>
   );
 }

@@ -1,78 +1,109 @@
 import { createGlobalStyle } from "styled-components";
-// import ProximaNovaWoof from "../../assets/fonts/ProximaNova.woff";
-// import ProximaNovaWoof2 from "../../assets/fonts/ProximaNova.woff";
-// import ProximaNovaOTF from "../../assets/fonts/SomaticRounded.otf";
-// import SomaticRounded from "../../assets/fonts/SomaticRounded.otf";
 
-const colours = {
-  capePalliser: "#A67744",
-  capePalliserHover: "#9A6B39",
-  beige: "#F7F5E6",
-  alabasterr: "#F7F7F7",
-  athensGray: "#EEF2F4",
-  silverRust: "#C6B9B6",
-  oxfordBlue: "#354E57",
-  oxfordBlueHover: "#2B434B",
-  como: "#547665",
-  mischka: "#D7CCDD",
-  rangitoto: "#2E2E22",
-  punch: "#DE3B35",
-  blue: "#0014FF",
-  white: "#FFFFFF",
-  colorWrapper: "#E0e4e7",
-  oxfordLogo: "#293D45",
-  colorBody: "#FAFAFA",
-  colorGreyDisable: "#B9C1C4",
-  colorDisabled: "#E4ECEF",
+// http://chir.ag/projects/name-that-color/
+export const colours = {
+  bostonBlue: "#428bca",
+  stTropaz: "#2a6496",
+  maroonFlush: "#C52D2F",
+  softPeach: "#f9f2f4",
+  mantis: "#a78d9b",
+  defaultWhite: "#ffffff",
+  mainBrown: "#230312",
 };
 
-const fontFamilies = {
-  heading: "Proxima Nova, Helvetica, Arial, sans-serif",
-  body: "PT Serif, Helvetica, Arial, sans-serif",
-  code: "Roboto Mono, monospace",
-  logo: "Somatic Rounded, Helvetica, Arial, sans-serif",
+export const fontFamilies = {
+  heading: "Open Sans, sans-serif",
+  body: "Open Sans, sans-serif",
+  code: "Verdana",
+  navBar: "Open Sans, sans-serif",
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export const theme = {
-  fontSizes: [12, 14, 18, 28, 32, 40, 48],
+  textStyles: {
+    canon: {
+      tag: "h1",
+      fontSize: [2, 3, 4],
+      fontWeight: 600,
+      lineHeight: ["32px", "36px", "56px"],
+      fontFamily: fontFamilies.heading,
+    },
+    navy: {
+      tag: "h2",
+      fontSize: [0, 1, 2],
+      fontWeight: 700,
+      lineHeight: ["18px", "20px", "24px"],
+      fontFamily: fontFamilies.navBar,
+    },
+    trafalgar: {
+      tag: "p",
+      fontWeight: "bold",
+      fontSize: [0, 1, 2],
+      fontFamily: fontFamilies.body,
+      lineHeight: ["18px", "20px", "22px"],
+    },
+    paragon: {
+      tag: "h2",
+      fontSize: [6, 8, 11],
+      fontWeight: 500,
+      fontFamily: fontFamilies.heading,
+      lineHeight: ["20px", "26px", "32px"],
+    },
+    doublePica: {
+      fontSize: [6, 6, 10],
+      fontWeight: 400,
+      fontFamily: fontFamilies.heading,
+      lineHeight: ["24px", "24px", "30px"],
+    },
+    greatPrimer: {
+      tag: "h3",
+      fontWeight: 400,
+      fontSize: [1, 2, 3],
+      fontFamily: fontFamilies.heading,
+      lineHeight: ["20px", "22px", "24px"],
+    },
+    bodyCopy: {
+      tag: "p",
+      fontWeight: 900,
+      fontSize: [0, 1],
+      fontFamily: fontFamilies.body,
+      lineHeight: ["18px", "20px", "22px"],
+    },
+    code: {
+      tag: "span",
+      px: "4px",
+      py: "2px",
+      lineHeight: "22px",
+      color: colours.maroonFlush,
+      bg: colours.softPeach,
+      borderRadius: 4,
+      fontFamily: fontFamilies.code,
+    },
+    underline: {
+      textDecoration: "underline",
+    },
+  },
+  containerWidth: "950px",
+  containerPadding: "15px",
+  fontSizes: [12, 14, 16, 20, 36, 52],
   breakpoints: ["319px", "599px"],
-  containerWidth: "1088px",
-  spacing: "1rem",
-  navHeight: "180px",
   colours: {
     ...colours,
-  },
-  fontFamilies: {
-    ...fontFamilies,
   },
 };
 
 const GlobalStyle = createGlobalStyle`
-
-@font-face {
-  font-family: 'Proxima Nova';
-  src: url(${"ProximaNovaWoof"}) format('woff'),
-}
-
-
 body {
-  font-family: "Proxima Nova", sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  background-color: ${(props) => props.theme.colours.colorWrapper};
+  font-family: "Open Sans', sans-serif";
+  background-color: ${colours.mainBrown};
   margin: 0 auto;
   height: 100%;
+  color: ${colours.defaultWhite}
 }
 
 a:link, a:visited {
-  color: ${(props) => props.theme.colours.oxfordBlue};
+  color: ${() => colours.mantis};
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
+} 
 
 * {
   box-sizing: border-box

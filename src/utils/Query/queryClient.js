@@ -6,13 +6,14 @@ const queryClientConfig = {
     queries: {
       retry: 200,
       staleTime: 1000 * 30, // 30 seconds
-      cacheTime: 1000 * 500, //30 seconds
+      cacheTime: 5000,
       refetchOnMount: "always",
       refetchOnWindowFocus: "always",
       refetchOnReconnect: "always",
       refetchInterval: 1000 * 30, //30 seconds
       refetchIntervalInBackground: false,
       suspense: false,
+      setTimeout: 0,
     },
     mutations: {
       retry: 2,
