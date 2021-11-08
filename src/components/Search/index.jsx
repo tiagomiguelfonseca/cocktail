@@ -1,13 +1,8 @@
 import React, { Fragment, useState } from "react";
-import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
-import { FetchSingleCocktail } from "../../services/fetchPosts.service";
-import { fetchSingleCocktailKey } from "../../utils/Query/queryKeys";
-import CocktailSection from "../CocktailSection/";
-import CountBar from "../CountBar";
-import { GreatPrimer } from "../Typography";
-import { Box, CustomBiSearch, CustomRow, Input, Form} from "./style";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import CountBar from "../CountBar";
+import { Box, CustomBiSearch, CustomRow, Form, Input } from "./style";
 
 export default function Search() {
   const [queryKey, setQueryKey] = useState("");
