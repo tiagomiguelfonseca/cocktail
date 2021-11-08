@@ -43,10 +43,10 @@ export const theme = {
     },
     paragon: {
       tag: "h2",
-      fontSize: [6, 8, 11],
-      fontWeight: 500,
+      fontSize: [1, 2, 3],
+      fontWeight: 600,
       fontFamily: fontFamilies.heading,
-      lineHeight: ["20px", "26px", "32px"],
+      lineHeight: ["20px", "26px", "1.1"],
     },
     doublePica: {
       fontSize: [6, 6, 10],

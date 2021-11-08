@@ -1,20 +1,12 @@
-import React, {Fragment}from "react";
-import { useQuery } from "react-query";
-import { fetchCocktails } from "../../services/fetchPosts.service";
-import { fetchCocktailsKey } from "../../utils/Query/queryKeys";
+import React, { Fragment } from "react";
 import CocktailCard from "../CocktailCard";
 import { CustomFlexContainer } from "./style";
-import { GreatPrimer } from "../Typography";
 
-const CocktailSection = ({ cocktailCardProps, sliceI, sliceF, isLoading, isError, data }) => {
-  // const { isLoading, isError, data } = useQuery(
-  //   fetchCocktailsKey,
-  //   fetchCocktails
-  // );
+const CocktailSection = ({ cocktailCardProps, sliceI, sliceF, isLoading, isError, data, title }) => {
 
   return (
     <Fragment>
-      <GreatPrimer style={{textAlign: "center"}}>Popular Drinks</GreatPrimer>
+    {title}
       <CustomFlexContainer>
         {isLoading ? (
           <div>Loading...</div>

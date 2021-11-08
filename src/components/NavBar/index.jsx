@@ -24,13 +24,13 @@ export default function NavBar(props) {
             </Link>
           </NavBarItem>
           <NavBarItem>
-            <Link to='/api'>
+            <Link to='https://www.thecocktaildb.com/api.php'>
               <Navy>API</Navy>
             </Link>
           </NavBarItem>
           <NavBarItem>
-            <Link to='/forum'>
-              <Navy>Forum</Navy>
+            <Link to='/browse'>
+              <Navy>Browse by Letter</Navy>
             </Link>
           </NavBarItem>
           <NavBarItem>

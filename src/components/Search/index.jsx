@@ -3,35 +3,27 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { FetchSingleCocktail } from "../../services/fetchPosts.service";
 import { fetchSingleCocktailKey } from "../../utils/Query/queryKeys";
+import CocktailSection from "../CocktailSection/";
 import CountBar from "../CountBar";
+import { GreatPrimer } from "../Typography";
 import {
   Box,
-  CustomBiSearch,
-  CustomFlexContainer,
-  CustomRow,
-  ImageContainer,
-  Input,
-  List,
+  CustomBiSearch, CustomRow, Input
 } from "./style";
-import { GreatPrimer } from "../Typography";
 
 export default function Search() {
   const [queryKey, setQueryKey] = useState("");
 
-  const {
-    isLoading: loadingCocktail,
-    isError: errorCocktail,
-    data: cocktail,
-  } = useQuery([fetchSingleCocktailKey, queryKey], FetchSingleCocktail);
-
+  const { isLoading, isError, data } = useQuery(
+    [fetchSingleCocktailKey, queryKey],
+    FetchSingleCocktail
+  );
   return (
     <Fragment>
       <CustomRow>
         <Box>
           <Link to='/'>
-            <CustomBiSearch>
-              <button></button>
-            </CustomBiSearch>
+            <CustomBiSearch />
           </Link>
           <Input
             value={queryKey}
@@ -43,33 +35,24 @@ export default function Search() {
         </Box>
         <CountBar />
       </CustomRow>
-      <CustomRow>
-        {loadingCocktail ? (
-          <div>Loading...</div>
-        ) : errorCocktail ? (
-          <div>No cocktails found</div>
-        ) : (
-          <CustomFlexContainer>
-            {queryKey.length === 0
-              ? ""
-              : cocktail !== null
-              ? cocktail.map((v) => {
-                  return (
-                    <Link to={`/drink/${v.idDrink}`}>
-                      <List key={v.idDrink}>
-                        <ImageContainer
-                          src={v.strDrinkThumb}
-                          alt={v.strDrink}
-                        />
-                        <GreatPrimer>{v.strDrink}</GreatPrimer>
-                      </List>
-                    </Link>
-                  );
-                })
-              : "Cocktail not found"}
-          </CustomFlexContainer>
-        )}
-      </CustomRow>
+      {queryKey.length === 0 ? (
+        ""
+      ) : data !== null || undefined ? (
+        <CocktailSection
+          sliceI='0'
+          sliceF='8'
+          isLoading={isLoading}
+          isError={isError}
+          data={data}
+          title={
+            <GreatPrimer style={{ textAlign: "center" }}>
+              Popular Drinks
+            </GreatPrimer>
+          }
+        />
+      ) : (
+        "No Cocktails Found"
+      )}
     </Fragment>
   );
 }
