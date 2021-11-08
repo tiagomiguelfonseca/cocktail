@@ -28,8 +28,8 @@ export const List = styled.li`
 `;
 
 export const Input = styled.input`
-  width: 50%;
-  padding: 10px 0 10px 10px;
+  /* width: 50%; */
+  padding: 10px 100px 10px 10px;
   margin-top: 30px
 `;
 
@@ -38,9 +38,7 @@ export const Span = styled.span`
 `;
 
 export const Box = styled.div`
-  position: relative;
   display: flex;
-  justify-content: center;
 `;
 
 export const CustomBiSearch = styled(BiSearch)`
@@ -49,5 +47,13 @@ width: 30px;
 top: 50%;
 height: auto;
 color: black;
-right: 240px;
+right: 0;
+`;
+
+export const Form = styled.form`
+  position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+
 `;

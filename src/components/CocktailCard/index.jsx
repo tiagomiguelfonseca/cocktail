@@ -5,7 +5,7 @@ import { CustomFlexContainer, ImageContainer } from "./style";
 
 export default function CocktailCard({ cocktail }) {
   const { idDrink, strDrink, strDrinkThumb } = cocktail;
-
+console.log(cocktail)
   return (
     <CustomFlexContainer>
       <Link to={`/drink/${idDrink}`}>

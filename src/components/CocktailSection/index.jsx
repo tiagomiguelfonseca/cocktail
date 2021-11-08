@@ -3,7 +3,7 @@ import CocktailCard from "../CocktailCard";
 import { CustomFlexContainer } from "./style";
 
 const CocktailSection = ({ cocktailCardProps, sliceI, sliceF, isLoading, isError, data, title }) => {
-
+console.log(data)
   return (
     <Fragment>
     {title}

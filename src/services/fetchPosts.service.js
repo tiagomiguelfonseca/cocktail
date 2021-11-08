@@ -51,6 +51,13 @@ export const FetchByLetter = async ({ queryKey }) => {
   return res.data.drinks;
 };
 
+export const FetchCocktailByName = async ({ queryKey }) => {
+  const [_key, query] = queryKey;
+  const res = await axios.get(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`
+  );
+  return res.data.drinks;
+};
 
 
 

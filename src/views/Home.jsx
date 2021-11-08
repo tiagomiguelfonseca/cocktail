@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import CocktailSection from "../components/CocktailSection";
 import Hero from "../components/Hero";
 import Search from "../components/Search";
@@ -11,8 +11,9 @@ import { GreatPrimer } from "../components/Typography";
 import BrowseLinks from "../components/BrowseLinks";
 
 export default function Home(sliceI, sliceF) {
+  const [useKey, setUseKey ] = useState("")
   const { isLoading, isError, data } = useQuery(
-    fetchCocktailsKey,
+    [fetchCocktailsKey, useKey],
     fetchCocktails
   );
 

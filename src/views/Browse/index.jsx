@@ -9,7 +9,7 @@ import { FetchByLetter } from "../../services/fetchPosts.service";
 import { FetchByLetterKey } from "../../utils/Query/queryKeys";
 import { CustomMaincontainer } from "./style";
 
-export default function Browse(queryKey) {
+export default function Browse() {
   const { slug } = useParams();
 
   const { isLoading, isError, data } = useQuery(

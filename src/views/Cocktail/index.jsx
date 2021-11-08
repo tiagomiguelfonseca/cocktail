@@ -2,20 +2,18 @@ import React, { Fragment } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import pixabay from "../../assets/images/pixabay-logo.png";
-import { GreatPrimer, BodyCopy } from "../../components/Typography";
+import { BodyCopy, GreatPrimer } from "../../components/Typography";
 import Layout from "../../containers/Layout";
 import { MainContainer } from "../../containers/Layout/styles";
 import { FetchSingleCocktailById } from "../../services/fetchPosts.service";
 import { FetchSingleCocktailByIdKey } from "../../utils/Query/queryKeys";
 import {
-  CustomFlexContainer,
-  FlexColumn,
+  CustomFlexContainer, CustomSection, FlexColumn,
   FlexRow,
   GridRow,
   ImageContainer,
   ImageIngredient,
-  Tag,
-  CustomSection
+  Tag
 } from "./style";
 
 

@@ -6,53 +6,31 @@ import { fetchSingleCocktailKey } from "../../utils/Query/queryKeys";
 import CocktailSection from "../CocktailSection/";
 import CountBar from "../CountBar";
 import { GreatPrimer } from "../Typography";
-import {
-  Box,
-  CustomBiSearch, CustomRow, Input
-} from "./style";
+import { Box, CustomBiSearch, CustomRow, Input, Form} from "./style";
+import { useNavigate } from "react-router";
 
 export default function Search() {
   const [queryKey, setQueryKey] = useState("");
 
-  const { isLoading, isError, data } = useQuery(
-    [fetchSingleCocktailKey, queryKey],
-    FetchSingleCocktail
-  );
+  const navigate = useNavigate();
+
   return (
     <Fragment>
       <CustomRow>
         <Box>
-          <Link to='/'>
-            <CustomBiSearch />
-          </Link>
-          <Input
-            value={queryKey}
-            type='text'
-            placeholder='Search for a Cocktail ...'
-            name='query'
-            onChange={(e) => setQueryKey(e.target.value)}
-          />
+          <Form onSubmit={(e) => navigate(`/results/${queryKey}`)}>
+          <Link to={`/results/${queryKey}`}><CustomBiSearch /></Link>
+            <Input
+              value={queryKey}
+              type='text'
+              placeholder='Search for a Cocktail ...'
+              name='query'
+              onChange={(e) => setQueryKey(e.target.value)}
+            />
+          </Form>
         </Box>
         <CountBar />
       </CustomRow>
-      {queryKey.length === 0 ? (
-        ""
-      ) : data !== null || undefined ? (
-        <CocktailSection
-          sliceI='0'
-          sliceF='8'
-          isLoading={isLoading}
-          isError={isError}
-          data={data}
-          title={
-            <GreatPrimer style={{ textAlign: "center" }}>
-              Popular Drinks
-            </GreatPrimer>
-          }
-        />
-      ) : (
-        "No Cocktails Found"
-      )}
     </Fragment>
   );
 }
