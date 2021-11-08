@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { FlexContainer } from "../../containers/Layout/styles";
 
 export const Nav = styled.nav`
   top: 0;
   position: sticky;
   height: ${(props) => props.theme.navHeight};
   background: transparent;
-  max-width: 1196px;
+  max-width: 1170px;
   margin: 0 auto;
   padding-top: 40px;
   display: flex;
@@ -15,11 +16,7 @@ export const Nav = styled.nav`
 `;
 
 export const NavBarItems = styled.ul`
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: bold;
   letter-spacing: 0.6px;
-  text-transform: uppercase;
   list-style: none;
   display: flex;
   align-items: center;
@@ -27,43 +24,45 @@ export const NavBarItems = styled.ul`
   li + li {
     margin-left: 45px;
   }
+  padding: 5px 12px;
+  margin: 0;
 `;
 
-export const FlexContainer = styled.div`
+export const NavBarItem = styled.li`
+  padding: 0px 10px;
+  
+  &:active {
+    li + li {
+      margin-left: 45px;
+    }
+    border-radius: 3px;
+    color: ${(props) => props.theme.colours.defaultWhite};
+    display: inline-block;
+    background-color: ${(props) => props.theme.colours.maroonFlush};
+    background-size: 5px 12px;
+  }
+  &:hover {
+    border-radius: 3px;
+    color: ${(props) => props.theme.colours.defaultWhite};
+    display: inline-block;
+    background-color: ${(props) => props.theme.colours.maroonFlush};
+    padding: 0px 10px;
+  }
+  a:visited {
+    color: ${(props) => props.theme.colours.defaultWhite};
+  }
+`;
+
+export const CustomFlexContainer = styled(FlexContainer)`
   display: flex;
+  align-items: center;
 `;
 
-export const Logo = styled.div`
-  font-family: "Somatic Rounded";
-  font-size: 27px;
-  letter-spacing: 1.6px;
-  color: ${(props) => props.theme.colours.blue};
-  a:hover {
-    text-decoration: none;
-  }
-  a:link {
-    color: ${(props) => props.theme.colours.oxfordLogo};
-  }
-`;
-
-export const SubNavBarItems = styled(NavBarItems)`
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: 0.8px;
-  justify-content: center;
-  margin-top: 28px;
-  text-transform: capitalize;
-  a:hover {
-    text-decoration-color: ${(props) => props.theme.colours.capePalliser};
-    text-decoration-style: solid;
-    text-decoration-thickness: 5px;
-    text-underline-offset: 5px;
-  }
-`;
+export const Logo = styled.div``;
 
 export const Badge = styled.span`
-background-color: red;
-    border-radius: 10px;
-    color: rgb(255,255,255);
-    padding: 3px 7px;
+  background-color: red;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  padding: 3px 7px;
 `;
