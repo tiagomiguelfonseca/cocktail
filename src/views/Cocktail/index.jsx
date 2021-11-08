@@ -8,14 +8,15 @@ import { MainContainer } from "../../containers/Layout/styles";
 import { FetchSingleCocktailById } from "../../services/fetchPosts.service";
 import { FetchSingleCocktailByIdKey } from "../../utils/Query/queryKeys";
 import {
-  CustomFlexContainer, CustomSection, FlexColumn,
+  CustomFlexContainer,
+  CustomSection,
+  FlexColumn,
   FlexRow,
   GridRow,
   ImageContainer,
   ImageIngredient,
-  Tag
+  Tag,
 } from "./style";
-
 
 export default function Cocktail(queryKey) {
   const { slug } = useParams();
@@ -83,7 +84,7 @@ export default function Cocktail(queryKey) {
                   </FlexColumn>
                 </CustomFlexContainer>
                 <CustomSection>
-                <GreatPrimer>Instructions</GreatPrimer>
+                  <GreatPrimer>Instructions</GreatPrimer>
                   <BodyCopy key={index}>{value.strInstructions}</BodyCopy>
                 </CustomSection>
               </Fragment>
