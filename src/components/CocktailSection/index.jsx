@@ -6,11 +6,11 @@ import CocktailCard from "../CocktailCard";
 import { CustomFlexContainer } from "./style";
 import { GreatPrimer } from "../Typography";
 
-const CocktailSection = ({ cocktailCardProps }) => {
-  const { isLoading, isError, data } = useQuery(
-    fetchCocktailsKey,
-    fetchCocktails
-  );
+const CocktailSection = ({ cocktailCardProps, sliceI, sliceF, isLoading, isError, data }) => {
+  // const { isLoading, isError, data } = useQuery(
+  //   fetchCocktailsKey,
+  //   fetchCocktails
+  // );
 
   return (
     <Fragment>
@@ -22,7 +22,7 @@ const CocktailSection = ({ cocktailCardProps }) => {
           <div>An error while fetching posts</div>
         ) : (
           data
-            .slice(0, 8)
+            .slice(sliceI, sliceF)
             .map((value) => (
               <CocktailCard
                 cocktail={value}
