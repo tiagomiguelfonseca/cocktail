@@ -11,6 +11,7 @@ import { GreatPrimer } from "../components/Typography";
 import BrowseLinks from "../components/BrowseLinks";
 
 export default function Home(sliceI, sliceF) {
+  // eslint-disable-next-line no-unused-vars
   const [useKey, setUseKey ] = useState("")
   const { isLoading, isError, data } = useQuery(
     [fetchCocktailsKey, useKey],
