@@ -5,8 +5,8 @@ const queryClientConfig = {
   defaultOptions: {
     queries: {
       retry: 200,
-      staleTime: 1000 * 30, // 30 seconds
-      cacheTime: 5000,
+      staleTime: 5000,
+      cacheTime: Infinity,
       refetchOnMount: "always",
       refetchOnWindowFocus: "always",
       refetchOnReconnect: "always",

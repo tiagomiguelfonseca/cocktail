@@ -75,7 +75,7 @@ export default function Cocktail(queryKey) {
                                   src={`https://www.thecocktaildb.com/images/ingredients/${strIngredient[1]}-Medium.png`}
                                   alt=''
                                 />
-                                <p>{strIngredient[1]}</p>
+                                <p>{value.strMeasure1}{strIngredient[1]}</p>
                               </div>
                             )
                           );

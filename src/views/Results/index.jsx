@@ -17,14 +17,14 @@ export default function Results() {
     [FetchCocktailByNameKey, slug],
     FetchCocktailByName
   );
-
-  console.log(slug);
+const alldata = data
+console.log(alldata)
   return (
     <Layout>
       <MainContainer>
         {slug.length === 0 ? (
           ""
-        ) : data !== null || undefined ? (
+        ) : data !== null ? (
           <CocktailSection
             isLoading={isLoading}
             isError={isError}

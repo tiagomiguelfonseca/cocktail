@@ -16,12 +16,12 @@ export default function Browse() {
     [FetchByLetterKey, slug],
     FetchByLetter
   );
-
+console.log(data)
   return (
     <Layout>
       <CustomMaincontainer>
         <Canon>Browse Cocktails</Canon>
-        {data === undefined ? (
+        {data == null ? (
           <GreatPrimer>No Cocktails Found</GreatPrimer>
         ) : (
           <CocktailSection
