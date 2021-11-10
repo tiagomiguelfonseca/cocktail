@@ -29,7 +29,8 @@ export default function Cocktail(queryKey) {
 
   const { isLoading, isError, isSuccess, refetch, remove, data, error } = useQuery(
     [FetchSingleCocktailByIdKey, d],
-    FetchSingleCocktailById,   {useErrorBoundary: (error) => error.response?.status >= 500}, {onError: (error) =>
+    FetchSingleCocktailById     );
+  //   {useErrorBoundary: (error) => error.response?.status >= 500}, {onError: (error) =>
 
   //     toast.error(`Something went wrong: ${error.message}`)}
   // );{onError: (error) =>
