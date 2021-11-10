@@ -10,7 +10,7 @@ function App() {
         <Theme>
           <MainRouter />
         </Theme>
-        <ReactQueryDevtools initialIsOpen={true} />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     
   );

@@ -19,4 +19,5 @@ const Breakpoint = styled.span`
   }
 `;
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => <Breakpoint>Breakpoint: </Breakpoint>;

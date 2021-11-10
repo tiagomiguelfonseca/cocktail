@@ -1,9 +1,19 @@
 import React, { Fragment } from "react";
 import CocktailCard from "../CocktailCard";
 import { CustomFlexContainer } from "./style";
+import ComponentForEmptyList from '../ComponentForEmptyList/index';
 
 const CocktailSection = ({ cocktailCardProps, sliceI, sliceF, isLoading, isError, data, title }) => {
-  return (
+
+  if (data == null || undefined ) {
+    return <ComponentForEmptyList />
+   } else
+
+  //  if (error) {
+  //   return "server error"
+  //  } 
+   
+   return (
     <Fragment>
     {title}
       <CustomFlexContainer>

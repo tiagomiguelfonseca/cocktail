@@ -1,6 +1,9 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import {
+  createSearchParams, Link, useSearchParams
+} from "react-router-dom";
+import ArrowLeft from "../../assets/images/Arrow-Left.png";
 import pixabay from "../../assets/images/pixabay-logo.png";
 import { BodyCopy, GreatPrimer } from "../../components/Typography";
 import Layout from "../../containers/Layout";
@@ -12,32 +15,56 @@ import {
   CustomSection,
   FlexColumn,
   FlexRow,
-  GridRow,
-  ImageContainer,
-  ImageIngredient,
-  Tag,
+  GridRow, ImageBack, ImageContainer, ImageIngredient, Tag
 } from "./style";
+import useDebounce from "../../utils/hooks/useDebounce"
+import toast from 'react-hot-toast'
 
-export default function Cocktail(queryKey) {
-  const { slug } = useParams();
+export default function Cocktail(queryKey) {  
+  const [searchParams] = useSearchParams(-1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
-  const { isLoading, isError, data } = useQuery(
-    [FetchSingleCocktailByIdKey, slug],
-    FetchSingleCocktailById
-  );
+  const d = searchParams.get("d");
+
+  const { isLoading, isError, isSuccess, refetch, remove, data, error } = useQuery(
+    [FetchSingleCocktailByIdKey, d],
+    FetchSingleCocktailById,   {useErrorBoundary: (error) => error.response?.status >= 500}, {onError: (error) =>
+
+      toast.error(`Something went wrong: ${error.message}`)}
+  );{onError: (error) =>
+
+      toast.error(`Something went wrong: ${error.message}`)}
+
+  
+
+  function appendSearchParams(obj) {
+    const sp = createSearchParams(searchParams);
+    Object.entries(obj).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        sp.delete(key);
+        value.forEach((v) => sp.append(key, v));
+      } else if (value === undefined) {
+        sp.delete(key);
+      } else {
+        sp.set(key, value);
+      }
+    });
+    return sp;
+  }
 
   return (
     <Layout>
       <MainContainer>
         {isLoading ? (
           <div>Loading...</div>
-        ) : isError ? (
+        ) : error ? (
           <div>An error while fetching posts</div>
         ) : (
           data.map((value, index) => {
             return (
-              <Fragment>
-                <CustomFlexContainer key={value.idDrink}>
+              <Fragment key={value}>
+                <CustomFlexContainer >
                   <FlexColumn>
                     <GreatPrimer>{value.strDrink}</GreatPrimer>
                     <ImageContainer
@@ -58,28 +85,39 @@ export default function Cocktail(queryKey) {
                         })}
                       </FlexRow>
                     )}
+                    <Link to={-1}>
+                      <ImageBack src={ArrowLeft} alt='back' />
+                    </Link>
                   </FlexColumn>
                   <FlexColumn>
                     <GreatPrimer>Ingredients</GreatPrimer>
                     <GridRow>
-                      {/* {Object.entries(value)
-                        .filter(([key]) => key.includes("strMeasure"))
-                        .map(strMeasure => strMeasure[1])} */}
-                      {Object.entries(value)
-                        .filter(([key]) => key.includes("strIngredient"))
-                        .map((strIngredient) => {
-                          return (
-                            strIngredient[1] !== null && (
-                              <div>
-                                <ImageIngredient
-                                  src={`https://www.thecocktaildb.com/images/ingredients/${strIngredient[1]}-Medium.png`}
-                                  alt=''
-                                />
-                                <p>{value.strMeasure1}{strIngredient[1]}</p>
-                              </div>
-                            )
-                          );
-                        })}
+                      {[...Array(15).keys()].map((i, index) => {
+                        return (
+                          <Link  key={i}
+                            to={`/ingredient?${appendSearchParams({
+                              i:
+                                value[`strIngredient${i + 1}`] &&
+                                value[`strIngredient${i + 1}`],
+                            })}`}
+                          >
+                          {value[`strIngredient${i + 1}`] && value[`strIngredient${i + 1}`] !== null &&
+                            <ImageIngredient
+                              src={`https://www.thecocktaildb.com/images/ingredients/${
+                                value[`strIngredient${i + 1}`] &&
+                                value[`strIngredient${i + 1}`]
+                              }-Medium.png`}
+                              alt=''
+                            />}
+                            <p>
+                              {value[`strMeasure${i + 1}`] &&
+                                value[`strMeasure${i + 1}`]}
+                              {value[`strIngredient${i + 1}`] &&
+                                value[`strIngredient${i + 1}`]}
+                            </p>
+                          </Link>
+                        );
+                      })}
                     </GridRow>
                   </FlexColumn>
                 </CustomFlexContainer>

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import tag from "clean-tag";
-
+// import tag from "clean-tag";
 import {
   space,
   lineHeight,
@@ -17,7 +16,7 @@ import {
   borderRadius
 } from "styled-system";
 
-const StyledDynamicComponent = styled(tag)`
+const StyledDynamicComponent = styled.p`
   ${space}
   ${fontSize}
   ${fontStyle}

@@ -1,12 +1,12 @@
 import { QueryClient } from "react-query";
-
+import ComponentForEmptyList from "../../components/ComponentForEmptyList";
 
 const queryClientConfig = {
   defaultOptions: {
     queries: {
-      retry: 200,
+      retry: 2,
       staleTime: 5000,
-      cacheTime: Infinity,
+      cacheTime: 5000,
       refetchOnMount: "always",
       refetchOnWindowFocus: "always",
       refetchOnReconnect: "always",
@@ -16,7 +16,9 @@ const queryClientConfig = {
       setTimeout: 0,
     },
     mutations: {
-      retry: 2,
+      retry: (failureCount, error) => {
+        return <ComponentForEmptyList />;
+      },
     },
   },
 };

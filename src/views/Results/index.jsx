@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import BrowseLinks from "../../components/BrowseLinks";
 import CocktailSection from "../../components/CocktailSection";
 import { Canon, GreatPrimer } from "../../components/Typography";
@@ -11,20 +11,17 @@ import { FetchCocktailByNameKey } from "../../utils/Query/queryKeys";
 
 
 export default function Results() {
-  const { slug } = useParams();
+  const [searchParams] = useSearchParams();
+
+  const s = searchParams.get("s")
 
   const { isLoading, isError, data } = useQuery(
-    [FetchCocktailByNameKey, slug],
+    [FetchCocktailByNameKey, s],
     FetchCocktailByName
   );
-const alldata = data
-console.log(alldata)
   return (
     <Layout>
       <MainContainer>
-        {slug.length === 0 ? (
-          ""
-        ) : data !== null ? (
           <CocktailSection
             isLoading={isLoading}
             isError={isError}
@@ -35,11 +32,6 @@ console.log(alldata)
               </Canon>
             }
           />
-        ) : (
-            <GreatPrimer style={{ textAlign: "center" }}>
-              No Cocktails Found, try again
-            </GreatPrimer>
-        )}
         <BrowseLinks
           title={
             <GreatPrimer style={{ textAlign: "center" }}>

@@ -15,6 +15,10 @@ export const ImageIngredient = styled.img`
     max-width: 80%;
 `;
 
+export const ImageBack= styled.img`
+    max-width: 20%;
+`;
+
 export const FlexColumn = styled.div`
 display: flex;
 flex-direction: column;

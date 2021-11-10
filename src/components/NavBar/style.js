@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FlexContainer } from "../../containers/Layout/styles";
+import { Navy } from "../Typography";
 
 export const Nav = styled.nav`
   top: 0;
@@ -66,3 +67,5 @@ export const Badge = styled.span`
   color: rgb(255, 255, 255);
   padding: 3px 7px;
 `;
+
+export const CustomNavy = styled(Navy)``;

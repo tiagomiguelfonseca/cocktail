@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import facebook from "../../assets/images/facebook_icon.png";
 import logo from "../../assets/images/logo.png";
 import twitter from "../../assets/images/twitter_icon.png";
-import { Navy } from "../Typography";
 import { CustomFlexContainer, Logo, Nav, NavBarItem, NavBarItems } from "./style";
+import { CustomNavy } from "./style";
 
 export default function NavBar(props) {
   return (
@@ -20,17 +20,17 @@ export default function NavBar(props) {
         <CustomFlexContainer>
           <NavBarItem active>
             <Link to='/'>
-              <Navy>Home</Navy>
+              <CustomNavy>Home</CustomNavy>
             </Link>
           </NavBarItem>
           <NavBarItem>
             <Link to='https://www.thecocktaildb.com/api.php'>
-              <Navy>API</Navy>
+              <CustomNavy>API</CustomNavy>
             </Link>
           </NavBarItem>
           <NavBarItem>
             <Link to='/browse'>
-              <Navy>Browse by Letter</Navy>
+              <CustomNavy>Browse by Letter</CustomNavy>
             </Link>
           </NavBarItem>
           <NavBarItem>
