@@ -31,10 +31,10 @@ export default function Cocktail(queryKey) {
     [FetchSingleCocktailByIdKey, d],
     FetchSingleCocktailById,   {useErrorBoundary: (error) => error.response?.status >= 500}, {onError: (error) =>
 
-      toast.error(`Something went wrong: ${error.message}`)}
-  );{onError: (error) =>
+  //     toast.error(`Something went wrong: ${error.message}`)}
+  // );{onError: (error) =>
 
-      toast.error(`Something went wrong: ${error.message}`)}
+  //     toast.error(`Something went wrong: ${error.message}`)}
 
   
 
